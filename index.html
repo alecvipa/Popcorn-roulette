@@ -13,34 +13,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
+<div class="istyle parallax">
+    <p id="Youtube">YouTube</p></span>
+    <section>
+        <h2 id="covertitle">Play your favourite playlist on</h2>
+        <!-- esta sección sólo se muestra si el usuario NO está loggeado -->
+        <div id="login">
+            <button id='login-button' class="btn btn-secondary">sing in to your spotify account</button>
+        </div>
+        <!-- esta sección sólo se muestra si el usuario SI está loggeado -->
+        <div id="loggedIn">
+            <h1>Logged in as <span id="display_name"></span></h1>
+            <div>
+                <img id="profile_image" src="" alt="">
+            </div>
 
-    <div class="istyle parallax">
-            <p id="Youtube">YouTube</p></span>
-        <section>
-                
-                
-            <h2 id="covertitle">Play your favourite playlist on</h2><span>
-            
-            <button type="button" class="btn btn-secondary" id="initbtn">Sign in to your Spotify account</button>
-        </section>
-        
-    </div>
-    <div class="istyle">
-            <div id="player"></div>
-    </div>
-    <div class="istyle parallax">
-        <h1>Div 3</h1>
-    </div>
-    <div class="istyle">
-        <h1>Div 4</h1>
-    </div>
+            <button id='get-playlists'>Get Playlists</button>
+            <div id="playlists">
+
+            </div>
+        </div>
+    </section>
+</div>
+<div class="istyle div2">
+
+    <div id="player"></div>
+</div>
+<div class="istyle parallax div3">
+</div>
+<div class="istyle div4">
+    <h1>Div 4</h1>
+</div>
 
 
-    <!-- link a jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- link a js -->
-    <script type="text/javascript" src="script.js"></script>
-    <!-- link to js MATERIALIZE -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- link a jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- link a js -->
+<script type="text/javascript" src="script.js"></script>
+<!-- link to js MATERIALIZE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
