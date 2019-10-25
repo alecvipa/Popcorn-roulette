@@ -177,7 +177,11 @@ var trackId;
                         tempVideo.youtubeName ="";
                         videos.push(tempVideo);
                         //comentado para no agotar las busquedas en youtube
+<<<<<<< HEAD
                         searchSongYT(trackId,response.items[index].track.artists[0].name,response.items[index].track.name);
+=======
+                        //searchSongYT(trackId,response.items[index].track.artists[0].name,response.items[index].track.name);
+>>>>>>> master
                         trackId++;
                         li.append(pl);
                         $('#tracks').append(li);
@@ -237,7 +241,11 @@ function onPlayerStateChange(event) {
 function searchSongYT(trackId_par,artist,songName){
     artist = artist.replace(/ /g, "+");
     songName = songName.replace(/ /g, "+");
+<<<<<<< HEAD
     var queryURL = "https://www.googleapis.com/youtube/v3/search?part=id&q="+artist+songName+"&maxResults=1&type=video&videoEmbeddable=true&order=relevance&key=AIzaSyDWWRojZU9gERnqQNXAuPMOcIiMboMxKAM";
+=======
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=id&q="+artist+songName+"&maxResults=1&type=video&videoEmbeddable=true&order=relevance&key=AIzaSyDo3n3mfuCiB5SU6p1THEcxUdyzKV1CsiQ";
+>>>>>>> master
     $.ajax({
         url: queryURL,
         method: "GET"
