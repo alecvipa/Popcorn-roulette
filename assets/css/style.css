@@ -14,7 +14,7 @@ h1 {
     border-radius: 16px;
 }
 div:nth-child(1) {
-    background-image: url(images/picshow.jpg);
+    background-image: url("../images/picshow.jpg");
     background-size: cover;   
     background-attachment: fixed;
     
@@ -27,7 +27,7 @@ div:nth-child(2) {
     background-color: goldenrod;
 }
 div:nth-child(3) {
-    background-image: url(images/DJ.jpg);
+    background-image: url("../images/DJ.jpg");
     background-size: cover;
     background-attachment: fixed;
     height: 500px;
@@ -36,10 +36,15 @@ div:nth-child(3) {
 div:nth-child(4) {
     background-color: goldenrod;
 }
+
 .btn {
     height: 60pt !important;
     border-radius: 32px !important;
     background-color: rgb(29, 185, 84) !important;
+    margin-top: 0.5vw;
+    margin-bottom: 0.5vw;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
 }
 .btn:hover {
     background-color: rgb(51, 224, 112) !important;
@@ -70,4 +75,12 @@ section {
     position: relative;
     left: 28%;
     bottom: 25%;
+}
+
+.track-btn{
+    font-size: 3vw;
+}
+
+.playlist-btn{
+    font-size: 3vw;
 }

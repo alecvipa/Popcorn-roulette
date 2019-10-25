@@ -1,46 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Youtufy</title>
+    <title>Youtify</title>
     <!-- link a css -->
-    <link rel="stylesheet" type="text/css" href=style.css>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- link a bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- link to css MATERIALIZE -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
+
 <body>
-
     <div class="istyle parallax">
-            <p id="Youtube">YouTube</p></span>
+        <p id="Youtube">YouTube</p>
         <section>
-                
-                
-            <h2 id="covertitle">Play your favourite playlist on</h2><span>
-            
-            <button type="button" class="btn btn-secondary" id="initbtn">Sign in to your Spotify account</button>
+            <h2 id="covertitle">Play your favourite playlist on</h2>
+            <button id="login-button" type="button" class="btn btn-secondary" id="initbtn"><i class="fab fa-spotify"></i> Sign in to your Spotify Account</button>
         </section>
-        
+        <div id="loggedIn">
+            <h1>Logged in as <span id="display_name"></span></h1>
+            <div>
+                <img id="profile_image" src="" alt="">
+            </div>
+            <button id='get-playlists'>Get Playlists</button>
+        </div>
     </div>
     <div class="istyle">
-            <div id="player"></div>
+        <h1>Playlists</h1>
+        <div>
+            <ul id="playlists">
+                <li><a class='playlist-btn href="#"'>Playlist 1</a></li>
+                <li><a class='playlist-btn href="#"'>Playlist 2</a></li>
+                <li><a class='playlist-btn href="#"'>Playlist 3</a></li>
+                <li><a class='playlist-btn href="#"'>Playlist 4</a></li>
+                <li><a class='playlist-btn href="#"'>Playlist 5</a></li>
+                <li><a class='playlist-btn href="#"'>Playlist 6</a></li>
+                <li><a class='playlist-btn href="#"'>Playlist 7</a></li>
+                <li><a class='playlist-btn href="#"'>Playlist 8</a></li>
+                <li><a class='playlist-btn href="#"'>Playlist </a></li>
+                <li><a class='playlist-btn href="#"'>Playlist 10</a></li>
+            </ul>
+        </div>
     </div>
     <div class="istyle parallax">
-        <h1>Div 3</h1>
+        <h1>Tracks</h1>
+        <div>
+            <ul id="tracks">
+                <li><a class='track-btn href="#"'>Track 1</a></li>
+                <li><a class='track-btn href="#"'>Track 2</a></li>
+                <li><a class='track-btn href="#"'>Track 3</a></li>
+                <li><a class='track-btn href="#"'>Track 4</a></li>
+                <li><a class='track-btn href="#"'>Track 5</a></li>
+                <li><a class='track-btn href="#"'>Track 6</a></li>
+                <li><a class='track-btn href="#"'>Track 7</a></li>
+                <li><a class='track-btn href="#"'>Track 8</a></li>
+                <li><a class='track-btn href="#"'>Track 9</a></li>
+                <li><a class='track-btn href="#"'>Track 10</a></li>
+            </ul>
+        </div>
     </div>
     <div class="istyle">
-        <h1>Div 4</h1>
+        <div id="player"></div>
+        <button id="backTrack"><i class="fas fa-backward"></i></button>
+        <h3 id="trackName">Youtube Song Name</h3>
+        <button id="nextTrack"><i class="fas fa-forward"></i></button>
     </div>
-
-
     <!-- link a jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- link a js -->
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="assets/javascript/logic.js"></script>
     <!-- link to js MATERIALIZE -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/99d86a1013.js"></script>
 </body>
+
 </html>
