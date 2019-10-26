@@ -61,6 +61,7 @@ div:nth-child(4) {
     position: relative;
     left: -66%;
     
+    
 }
 #Youtube {
 
@@ -71,13 +72,13 @@ div:nth-child(4) {
     width: 100;
     position: relative;
     left: 54%;
-    top: -28.5%;
+    top: -28.9%;
 }
 #carrousel {
 
     position: absolute;
-    left: 36%;
-    top: 800px;
+    left: 37%;
+    top: 900px;
 
 }
 section {
@@ -99,7 +100,7 @@ section {
     overflow: scroll;
     height: 200pt;
     color: white;
-    width: 60pt;
+    width: 110pt;
     text-align: center;
     padding: 1%;
 }
@@ -109,7 +110,7 @@ section {
     overflow: scroll;
     height: 200pt;
     color: white;
-    width: 50pt;
+    width: 100pt;
     text-align: center;
     top: 1%;
     
@@ -120,6 +121,8 @@ section {
 .w3-section {
 
     max-width: 400pt;
+    position: relative;
+    left: -1%;
 
 }
 #setYTPlaylist {
@@ -128,5 +131,41 @@ section {
     margin-top: 4%;
     
 }
+.promotitles {
+    text-align: center;
+}
 
-/* adding comment */
+
+/* Media queries */
+@media only screen and (max-width: 1000px) {
+
+    #carrousel {
+
+        position: absolute !important;
+        left: 33% !important;
+        top: 455px;
+    
+    }
+    .mySlides {
+        width: 250px !important;
+        position: relative !important;
+        left: 9% !important;
+    }
+    h4 {
+        font-size: 20pt !important;
+    }
+    h5 {
+        font-size: 15pt !important;
+    }
+
+    #setYTPlaylist {
+        position: relative;
+        left: 29%;
+        margin-top: 4%;
+        height: 50px !important;
+        
+        
+    }
+    
+   
+  }
