@@ -1,5 +1,4 @@
 
-
 .istyle {
     display: flex;
     align-items: center;
@@ -24,24 +23,24 @@ h1 {
     background-position: 0 0;
 
 }
-div:nth-child(2) {
+div:nth-child(3) {
     background-color: goldenrod;
     
 }
-div:nth-child(3) {
+div:nth-child(4) {
     background-image: url("../images/DJ.jpg");
     background-size: cover;
     background-attachment: fixed;
     height: 500px;
     
 }
-div:nth-child(4) {
-    background-color: goldenrod;
+div:nth-child(5) {
+    background-color: black;
 }
 
 .btn {
-    height: 60pt !important;
-    border-radius: 32px !important;
+    /* height: 60pt !important; */
+    /* border-radius: 16px !important; */
     background-color: rgb(29, 185, 84) !important;
     margin-top: 0.5vw;
     margin-bottom: 0.5vw;
@@ -61,7 +60,6 @@ div:nth-child(4) {
     position: relative;
     left: -66%;
     
-    
 }
 #Youtube {
 
@@ -72,19 +70,19 @@ div:nth-child(4) {
     width: 100;
     position: relative;
     left: 54%;
-    top: -28.9%;
+    top: -28.5%;
 }
 #carrousel {
 
     position: absolute;
-    left: 37%;
-    top: 900px;
+    left: 36%;
+    top: 700px;
 
 }
 section {
     position: relative;
-    left: 28%;
-    bottom: 25%;
+    /* left: 28%;
+    bottom: 25%; */
 }
 
 .track-btn{
@@ -94,13 +92,14 @@ section {
 .playlist-btn{
     font-size: 2vw;
 }
+
 .playsection {
     position: relative;
     right: 30%;
     overflow: scroll;
     height: 200pt;
     color: white;
-    width: 110pt;
+    width: 60pt;
     text-align: center;
     padding: 1%;
 }
@@ -119,53 +118,37 @@ section {
     display:none;
 }
 .w3-section {
-
     max-width: 400pt;
     position: relative;
     left: -1%;
-
 }
+
 #setYTPlaylist {
     position: relative;
     left: 33%;
     margin-top: 4%;
-    
 }
+
 .promotitles {
     text-align: center;
+    color: white;
 }
 
+.playlist-btn, .track-btn {
+    cursor: pointer;
+}
 
-/* Media queries */
-@media only screen and (max-width: 1000px) {
+.playlist-btn:hover, .track-btn:hover {
+    text-decoration: underline;
+}
+#videosSection {
 
-    #carrousel {
+    background-image: url("../images/picshow.jpg");
+    background-size: cover;   
+    background-attachment: fixed;
+    height: 650px;
 
-        position: absolute !important;
-        left: 33% !important;
-        top: 455px;
-    
-    }
-    .mySlides {
-        width: 250px !important;
-        position: relative !important;
-        left: 9% !important;
-    }
-    h4 {
-        font-size: 20pt !important;
-    }
-    h5 {
-        font-size: 15pt !important;
-    }
-
-    #setYTPlaylist {
-        position: relative;
-        left: 29%;
-        margin-top: 4%;
-        height: 50px !important;
-        
-        
-    }
-    
-   
-  }
+}
+#videosSection2 {
+    background-color: grey;
+}
