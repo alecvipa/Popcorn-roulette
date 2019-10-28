@@ -10,42 +10,13 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 var connectionsRef = database.ref("/api_keys");
-<<<<<<< HEAD
 var videos = [];
-=======
-
-var videos = []; /*[{trackId: 1,
-               videoId: "MV_-P1IHr7w",
-               spotifyName: "",
-               youtubeName: ""},
-              {trackId: 2,
-               videoId: "KvYZVEzaPno",
-               spotifyName: "",
-               youtubeName: ""},
-              {trackId: 3,
-               videoId: "FbcLcSY2au4",
-               spotifyName: "",
-               youtubeName: ""},
-              {trackId: 4,
-               videoId: "0ewH5r8KZ6s",
-               spotifyName: "",
-               youtubeName: ""},
-              {trackId: 5,
-               videoId: "vyzihcRNy0Q",
-               spotifyName: "",
-               youtubeName: ""},
-              {trackId: 6,
-               videoId: "tAGnKpE4NCI",
-               spotifyName: "",
-               youtubeName: ""}];*/
->>>>>>> origin/master
 var tempVideo = {trackId: 0,
                  videoId: " ",
                  artist: " ",
                  songName: " ",
                  youtubeName: " "};
 var player, iframe, tag, firstScriptTag, trackId, apiKeys;
-<<<<<<< HEAD
 var actualVideo = 0, myIndex = 0;
 var userImage;
 var userName;
@@ -59,21 +30,6 @@ database.ref("/api_keys").on("value", function(snapshot) {
     console.log("The read failed: " + errorObject.code);
 });
 
-=======
-var actualVideo = 0, actualKey = 0, myIndex = 0;
-var userImage;
-var userName;
-
-database.ref("/api_keys").on("value", function(snapshot) {
-    apiKeys = JSON.parse(snapshot.val());
-    console.log("API Keys");
-    console.log(apiKeys);
-    console.log(apiKeys[0]);
-}, function(errorObject) {
-    console.log("The read failed: " + errorObject.code);
-});
-
->>>>>>> origin/master
 function carousel() {
     var i;
     var x = document.getElementsByClassName("mySlides");
@@ -135,7 +91,6 @@ function carousel() {
                     'Authorization': 'Bearer ' + access_token
                 },
                 success: function (response) {
-<<<<<<< HEAD
                     console.log(response);
                     userName = response.display_name;
                     userEmail = response.email;
@@ -148,12 +103,6 @@ function carousel() {
                     $('#sideBarUserFollowers1').text("Followers: "+userFollowers);
                     $('#sideBarUserFollowers2').text("Followers: "+userFollowers);
                     userImage = response.images[0].url;
-=======
-                    userName = response.display_name
-                    $('#sideBarUserName1').text(userName);
-                    $('#sideBarUserName2').text(userName);
-                    userImage = response.images[0].url
->>>>>>> origin/master
                     $('#navBarUserImage').attr('src', userImage);
                     $('#sideBarUserImage1').attr('src', userImage);
                     $('#sideBarUserImage2').attr('src', userImage);
@@ -182,10 +131,6 @@ function carousel() {
             // var redirect_uri = 'http://127.0.0.1:5500/index.html'; // Your redirect uri
             var redirect_uri = window.location.href; //'http://127.0.0.1:5500/index.html'; // Your redirect uri
             var state = generateRandomString(16);
-<<<<<<< HEAD
-=======
-            console.log(redirect_uri);
->>>>>>> origin/master
             localStorage.setItem(stateKey, state);
             var scope = 'user-read-private user-read-email';
 
@@ -284,11 +229,7 @@ function onYouTubeIframeAPIReady() {
 function onPlayerReady(event) {
     player = event.target;
     iframe = $("#player");
-<<<<<<< HEAD
     //player.playVideo();
-=======
-    //player.p  layVideo();
->>>>>>> origin/master
 }
 
 function playInFullscreen() {
@@ -311,17 +252,12 @@ function onPlayerStateChange(event) {
     }
 };
 
-<<<<<<< HEAD
 function searchSongYT(trackId_par,artist,songName,actualKey){
-=======
-function searchSongYT(trackId_par,artist,songName){
->>>>>>> origin/master
     artist = artist.replace(/ /g, "+");
     songName = songName.replace(/ /g, "+");
     var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&fields=items(id/videoId,snippet/title)&q="+artist+songName+"&maxResults=1&type=video&videoEmbeddable=true&order=relevance&key="+apiKeys[actualKey];
     $.ajax({
         url: queryURL,
-<<<<<<< HEAD
         method: "GET",
         success: function (response) {
             if (response.items.length > 0) {
@@ -344,25 +280,6 @@ function searchSongYT(trackId_par,artist,songName){
                 else{
                     console.log("The "+trackId_par+" could not be retrived because of quota exceeded")
                 }
-=======
-        method: "GET"
-    }).then(function (response) {
-        if (response.items.length > 0){
-            videos[trackId_par].youtubeName = response.items[0].snippet.title;
-            videos[trackId_par].videoId = response.items[0].id.videoId;
-            if (trackId_par === 0){
-                player.loadVideoById(videos[0].videoId);
-                $("#player").show();
-            }
-        }
-        else if (response.error.code === 403){
-            actualKey++;
-            if (actualKey < apiKeys.length){
-                searchSongYT(trackId_par,artist,songName);
-            }
-            else{
-                alert("Your Youtube quota has been exceeded for this application");
->>>>>>> origin/master
             }
         }
     });
@@ -370,15 +287,9 @@ function searchSongYT(trackId_par,artist,songName){
 
 $(document).on("click", "#setYTPlaylist", function(event){
     player.stopVideo();
-<<<<<<< HEAD
     $("#player").show();
     for(var i=0; i<videos.length; i++){
         searchSongYT(i,videos[i].artist,videos[i].songName,0);
-=======
-    $("#player").hide();
-    for(var i=0; i<videos.length; i++){
-        searchSongYT(i,videos[i].artist,videos[i].songName);
->>>>>>> origin/master
     }
 });
 
@@ -413,10 +324,6 @@ $(document).on("click", "#nextTrack", function(event){
 });
 
 $(document).on("click", "#logout-button", function(event){
-<<<<<<< HEAD
-=======
-    console.log("ENTRO");
->>>>>>> origin/master
     const url = 'https://www.spotify.com/logout/'                                                                                                                                                                                                                                                                               
     const spotifyLogoutWindow = window.open(url, 'Spotify Logout', 'width=700,height=500,top=40,left=40')                                                                                                
     setTimeout(function(){ spotifyLogoutWindow.close();window.location.href = 'index.html';}, 2000);
@@ -436,10 +343,7 @@ $(document).ready(function () {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     $("#player").hide();
     $('.sidenav').sidenav();
-<<<<<<< HEAD
     $('.scrollspy').scrollSpy();
-=======
->>>>>>> origin/master
     $('#slide_out_1').sidenav({ edge: 'left' });
     $('#slide_out_2').sidenav({ edge: 'right' });
     carousel();
