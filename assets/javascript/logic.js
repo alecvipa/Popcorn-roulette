@@ -20,6 +20,9 @@ var player, iframe, tag, firstScriptTag, trackId, apiKeys;
 var actualVideo = 0, myIndex = 0;
 var userImage;
 var userName;
+var userEmail;
+var userFollowers;
+
 
 database.ref("/api_keys").on("value", function(snapshot) {
     apiKeys = JSON.parse(snapshot.val());
@@ -88,10 +91,18 @@ function carousel() {
                     'Authorization': 'Bearer ' + access_token
                 },
                 success: function (response) {
-                    userName = response.display_name
+                    console.log(response);
+                    userName = response.display_name;
+                    userEmail = response.email;
+                    userFollowers = response.followers.total;
+                    console.log(userFollowers);
                     $('#sideBarUserName1').text(userName);
                     $('#sideBarUserName2').text(userName);
-                    userImage = response.images[0].url
+                    $('#sideBarUserEmail1').text(userEmail)
+                    $('#sideBarUserEmail2').text(userEmail)
+                    $('#sideBarUserFollowers1').text("Followers: "+userFollowers);
+                    $('#sideBarUserFollowers2').text("Followers: "+userFollowers);
+                    userImage = response.images[0].url;
                     $('#navBarUserImage').attr('src', userImage);
                     $('#sideBarUserImage1').attr('src', userImage);
                     $('#sideBarUserImage2').attr('src', userImage);
@@ -332,6 +343,7 @@ $(document).ready(function () {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     $("#player").hide();
     $('.sidenav').sidenav();
+    $('.scrollspy').scrollSpy();
     $('#slide_out_1').sidenav({ edge: 'left' });
     $('#slide_out_2').sidenav({ edge: 'right' });
     carousel();
