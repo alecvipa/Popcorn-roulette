@@ -10,7 +10,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 var connectionsRef = database.ref("/api_keys");
-var videos = [];
+var videos = [], videosTemp = [];
 var tempVideo = {trackId: 0,
                  videoId: " ",
                  artist: " ",
@@ -22,7 +22,6 @@ var userImage;
 var userName;
 var userEmail;
 var userFollowers;
-
 
 database.ref("/api_keys").on("value", function(snapshot) {
     apiKeys = JSON.parse(snapshot.val());
@@ -79,7 +78,7 @@ function carousel() {
     // con este if se sabe si hubo algún problema de autenticación
     if (access_token && (state == null || state !== storedState)) {
         alert('There was an error during the authentication');
-    } 
+    }
     else {
         localStorage.removeItem(stateKey);
         // con este if se sabe si se está autenticado correctamente
@@ -91,17 +90,15 @@ function carousel() {
                     'Authorization': 'Bearer ' + access_token
                 },
                 success: function (response) {
-                    console.log(response);
-                    userName = response.display_name;
+                    userName = response.display_name
                     userEmail = response.email;
                     userFollowers = response.followers.total;
-                    console.log(userFollowers);
                     $('#sideBarUserName1').text(userName);
                     $('#sideBarUserName2').text(userName);
-                    $('#sideBarUserEmail1').text(userEmail)
-                    $('#sideBarUserEmail2').text(userEmail)
-                    $('#sideBarUserFollowers1').text("Followers: "+userFollowers);
-                    $('#sideBarUserFollowers2').text("Followers: "+userFollowers);
+                    $('#sideBarUserEmail1').text(userEmail);
+					$('#sideBarUserEmail2').text(userEmail);
+					$('#sideBarUserFollowers1').text("Followers: "+userFollowers);
+					$('#sideBarUserFollowers2').text("Followers: "+userFollowers);
                     userImage = response.images[0].url;
                     $('#navBarUserImage').attr('src', userImage);
                     $('#sideBarUserImage1').attr('src', userImage);
@@ -110,11 +107,11 @@ function carousel() {
                     $('#login-section').hide();
                     $('#navBar').show();
                     $('#playlistSection').show();
-                    $('#videosSection').show();
-                    $('#videosSection2').show();
+                    //$('#videosSection').show();
+                    //$('#videosSection2').show();
                 }
             });
-        } 
+        }
         else {
             $('#login-section').show();
             $('#navBar').hide();
@@ -182,9 +179,8 @@ function carousel() {
                     'Authorization': 'Bearer ' + access_token
                 },
                 success: function (response) {
-                    videos = [];
                     trackId = 1;
-                    
+                    videosTemp = [];
                     response.items.forEach(function (item, index) {
                         tempVideo = {};
                         var li = $("<li>");
@@ -199,7 +195,7 @@ function carousel() {
                         tempVideo.songName = response.items[index].track.name;
                         tempVideo.videoId = "";
                         tempVideo.youtubeName ="";
-                        videos.push(tempVideo);
+                        videosTemp.push(tempVideo);
                         trackId++;
                         li.append(pl);
                         $('#tracks').append(li);
@@ -264,7 +260,7 @@ function searchSongYT(trackId_par,artist,songName,actualKey){
                 videos[trackId_par].youtubeName = response.items[0].snippet.title;
                 videos[trackId_par].videoId = response.items[0].id.videoId;
                 if (trackId_par === 0) {
-                    $("#trackName").text(videos[actualVideo].youtubeName);
+					$("#trackName").text(videos[0].youtubeName);
                     player.loadVideoById(videos[0].videoId);
                 }
             }
@@ -286,10 +282,24 @@ function searchSongYT(trackId_par,artist,songName,actualKey){
 }
 
 $(document).on("click", "#setYTPlaylist", function(event){
-    player.stopVideo();
-    $("#player").show();
-    for(var i=0; i<videos.length; i++){
-        searchSongYT(i,videos[i].artist,videos[i].songName,0);
+    if (videosTemp.length > 0){
+        if(videos.length === videosTemp.length){
+            if (videos[videos.length-1].songName === videosTemp[videosTemp.length-1].songName){
+                return;
+            }
+        }
+        videos = [];
+        actualVideo = 0;
+        for(var i=0; i<videosTemp.length; i++){
+            videos.push(videosTemp[i]);
+        }
+        $("#videosSection").show();
+        $("#videosSection2").show();
+        player.stopVideo();
+        $("#player").show();
+        for(var i=0; i<videos.length; i++){
+            searchSongYT(i,videos[i].artist,videos[i].songName,0);
+        }
     }
 });
 
@@ -324,9 +334,9 @@ $(document).on("click", "#nextTrack", function(event){
 });
 
 $(document).on("click", "#logout-button", function(event){
-    const url = 'https://www.spotify.com/logout/'                                                                                                                                                                                                                                                                               
-    const spotifyLogoutWindow = window.open(url, 'Spotify Logout', 'width=700,height=500,top=40,left=40')                                                                                                
-    setTimeout(function(){ spotifyLogoutWindow.close();window.location.href = 'index.html';}, 2000);
+    const url = 'https://www.spotify.com/logout/'
+    const spotifyLogoutWindow = window.open(url, 'Spotify Logout', 'width=700,height=500,top=40,left=40')
+    setTimeout(function(){ spotifyLogoutWindow.close();window.location.href = 'index.html';}, 3000);
 });
 
 $(document).ready(function () {
@@ -342,6 +352,8 @@ $(document).ready(function () {
     firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     $("#player").hide();
+    $("#videosSection").hide();
+    $("#videosSection2").hide();
     $('.sidenav').sidenav();
     $('.scrollspy').scrollSpy();
     $('#slide_out_1').sidenav({ edge: 'left' });
